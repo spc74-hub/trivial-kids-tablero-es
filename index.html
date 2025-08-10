@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trivial Kids ES — v7</title>
+  <meta name="description" content="Trivial para 1–4 jugadores con bancos de preguntas versionados e importación JSON." />
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React 18 UMD -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Babel (para poder escribir JSX aquí sin build) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>html,body,#root{height:100%}</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white to-slate-50">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const {useEffect, useMemo, useRef, useState} = React;
+
+    const STORAGE = {
+      setup: 'trivial_v7_setup',
+      state: 'trivial_v7_state',
+      answered: 'trivial_v7_answeredIds',
+      archived: 'trivial_v7_archivedIds',
+      bankVersion: 'trivial_v7_bankVersion'
+    };
+
+    // ======= Tipos y constantes =======
+    const DIFF = { EASY:'Fácil', MEDIUM:'Media', HARD:'Difícil', EXPERT:'Muy difícil' };
+    const DEFAULT_CATS = {
+      GEO:'Geografía', HIS:'Historia', LEN:'Lengua', SCI:'Ciencia', CUL:'Cultura/Deporte',
+      LANG:'Idiomas (EN/FR)', RIDDLE:'Adivinanzas', MEDIA:'Películas/Juegos', REL:'Religión', MUS:'Música'
+    };
+
+    // ======= Utilidades =======
+    const uid = () => Math.random().toString(36).slice(2, 10);
+    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+    const lsGet = (k, fallback) => { try { const v = localStorage.getItem(k); return v? JSON.parse(v): fallback; } catch { return fallback; } };
+    const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+    const shuffle = (arr) => { const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=(i*31+7)%(i+1); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+
+    function sanitize(list){
+      return (list||[]).filter(q => q && typeof q.q==='string' && Array.isArray(q.options) && q.options.length===4 && Number.isInteger(q.correct) && q.correct>=0 && q.correct<4 && typeof q.cat==='string' && typeof q.diff==='string' && typeof q.id==='string');
+    }
+
+    // ======= Banco embebido mínimo (demo) =======
+    // Sirve para que la app funcione sin ficheros externos. Puedes importar JSON para ampliarlo.
+    const EMBEDDED_BANK = {
+      version: 'demo-1.0.0',
+      categories: DEFAULT_CATS,
+      questions: sanitize([
+        {id:'GEO-e1', cat:'GEO', diff:'EASY', q:'Capital de España', options:['Madrid','Barcelona','Sevilla','Valencia'], correct:0, exp:'Madrid es la capital.'},
+        {id:'HIS-e1', cat:'HIS', diff:'EASY', q:'Descubrimiento de América (año)', options:['1492','1500','1485','1510'], correct:0, exp:'1492.'},
+        {id:'SCI-e1', cat:'SCI', diff:'EASY', q:'Fórmula del agua', options:['H2O','CO2','O2','NaCl'], correct:0},
+        {id:'LEN-m1', cat:'LEN', diff:'MEDIUM', q:'¿Qué es una metáfora?', options:["Comparación sin 'como'","Exageración","Contradicción","Imitación sonora"], correct:0},
+        {id:'CUL-h1', cat:'CUL', diff:'HARD', q:'Goya 2020 a Mejor Película (España)', options:['Dolor y gloria','Mientras dure la guerra','La trinchera infinita','O que arde'], correct:0},
+        {id:'LANG-e1', cat:'LANG', diff:'EASY', q:"EN: Past of 'go'", options:['went','goed','gone','goes'], correct:0},
+        {id:'RIDDLE-e1', cat:'RIDDLE', diff:'EASY', q:'Me rompo si me nombras', options:['El silencio','El secreto','La promesa','El hielo'], correct:0},
+        {id:'MEDIA-e1', cat:'MEDIA', diff:'EASY', q:"Héroe de 'The Legend of Zelda'", options:['Link','Zelda','Ganon','Mario'], correct:0},
+        {id:'REL-m1', cat:'REL', diff:'MEDIUM', q:'Mes de ayuno en el islam', options:['Ramadán','Muharram','Safar','Shawwal'], correct:0},
+        {id:'MUS-x1', cat:'MUS', diff:'EXPERT', q:'Acorde mayor básico', options:['Tónica, 3M, 5J','Tónica, 2, 4','Tónica, 3m, 5d','Solo tónica'], correct:0}
+      ])
+    };
+
+    // ======= Carga de bancos =======
+    async function fetchJSON(url){
+      const res = await fetch(url, {cache:'no-store'});
+      if(!res.ok) throw new Error('No se pudo cargar '+url);
+      return await res.json();
+    }
+
+    function mergeBanks(banks){
+      // Combina múltiples bancos (por versión o por categoría). Último gana en colisiones de IDs.
+      const categories = {...DEFAULT_CATS};
+      const map = new Map();
+      let version = [];
+      for(const b of banks){
+        if(b?.categories) Object.assign(categories, b.categories);
+        if(Array.isArray(b?.questions)){
+          for(const q of sanitize(b.questions)) map.set(q.id, q);
+        }
+        if(b?.version) version.push(b.version);
+      }
+      return { version: version.join('+')||'local', categories, questions: Array.from(map.values()) };
+    }
+
+    // ======= Componentes UI =======
+    function Toggle({on, onClick, children}){
+      return <button onClick={onClick} className={`px-3 py-1.5 rounded-xl border ${on? 'bg-slate-900 text-white border-slate-900':'bg-white border-slate-300 hover:bg-slate-50'}`}>{children}</button>;
+    }
+
+    function BankManager({ bank, setBank, answered, archived, onImportFiles, onImportURL, onExport }){
+      const [url, setUrl] = useState('');
+      const counts = useMemo(()=>{
+        const byCat = {}; const byDiff = {}; (bank.questions||[]).forEach(q=>{ byCat[q.cat]=(byCat[q.cat]||0)+1; byDiff[q.diff]=(byDiff[q.diff]||0)+1; });
+        return { byCat, byDiff, total: bank.questions?.length||0 };
+      }, [bank]);
+
+      return (
+        <section className="p-4 rounded-2xl border bg-white shadow-sm">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-lg font-bold">Banco de preguntas</h2>
+            <div className="text-xs text-slate-500">Versión cargada: <span className="font-mono">{bank.version}</span> • Total: {counts.total}</div>
+          </div>
+          <div className="mt-3 grid md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <div className="text-sm font-semibold">Importar JSON (arrastrar/soltar o seleccionar):</div>
+              <input type="file" accept="application/json" multiple onChange={(e)=>onImportFiles([...e.target.files])} />
+              <div className="text-xs text-slate-500">Cada archivo debe tener {{version, categories, questions:[...]}}. Las IDs de preguntas deben ser únicas y estables.</div>
+              <div className="flex gap-2 mt-2">
+                <input className="flex-1 px-3 py-2 rounded-xl border" placeholder="https://.../preguntas-v2.json" value={url} onChange={(e)=>setUrl(e.target.value)} />
+                <button onClick={()=>onImportURL(url)} className="px-3 py-2 rounded-xl bg-slate-900 text-white">Importar URL</button>
+              </div>
+              <button onClick={onExport} className="mt-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200">Exportar banco actual</button>
+            </div>
+            <div>
+              <div className="text-sm font-semibold mb-1">Resumen</div>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div className="p-2 rounded-lg bg-slate-50">Respondidas: {answered.size}</div>
+                <div className="p-2 rounded-lg bg-slate-50">Archivadas: {archived.size}</div>
+              </div>
+              <div className="mt-3 text-xs text-slate-500">
+                Consejo: versiona tus bancos como <code>questions/v1/*.json</code>, <code>questions/v2/*.json</code>, etc., y publica en GitHub Pages. La app puede combinar varios ficheros y detectar nuevas preguntas por su <strong>ID</strong>.
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Setup({ setup, setSetup, cats, total, available, filters, setFilters }){
+      const setAllCats = (val) => setFilters({...filters, cats: Object.fromEntries(Object.keys(cats).map(k=>[k,val]))});
+      const setAllLvls = (val) => setFilters({...filters, diffs: Object.fromEntries(Object.keys(DIFF).map(k=>[k,val]))});
+      return (
+        <section className="p-4 rounded-2xl border bg-white shadow-sm">
+          <h2 className="text-lg font-bold mb-3">Configuración</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium">Jugadores</label>
+              <div className="mt-2 flex gap-2">{[1,2,3,4].map(n=> (
+                <Toggle key={n} on={setup.playerCount===n} onClick={()=>setSetup({...setup, playerCount:n})}>{n}</Toggle>
+              ))}</div>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {Array.from({length:setup.playerCount}).map((_,i)=> (
+                  <input key={i} value={setup.players[i]} onChange={(e)=>{ const p=[...setup.players]; p[i]=e.target.value; setSetup({...setup, players:p}); }} className="px-3 py-2 rounded-xl border" placeholder={`Jugador ${i+1}`} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Meta y tiempo</label>
+              <div className="mt-2 flex items-center gap-3">
+                <div>
+                  <div className="text-xs text-slate-500">Puntos para ganar</div>
+                  <input type="number" min={3} max={50} value={setup.target} onChange={(e)=>setSetup({...setup, target: clamp(Number(e.target.value)||15,3,50)})} className="w-24 px-3 py-2 rounded-xl border" />
+                </div>
+                <div className="flex items-center gap-2 mt-2">
+                  <input id="timerOn" type="checkbox" checked={setup.timerOn} onChange={(e)=>setSetup({...setup, timerOn:e.target.checked})} />
+                  <label htmlFor="timerOn" className="text-sm">Temporizador</label>
+                  <input type="number" min={5} max={90} value={setup.timePerQ} onChange={(e)=>setSetup({...setup, timePerQ: clamp(Number(e.target.value)||25,5,90)})} className="w-20 px-3 py-2 rounded-xl border" />
+                  <span className="text-sm text-slate-500">seg</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium">Categorías</label>
+                <div className="flex gap-2 text-xs">
+                  <button onClick={()=>setAllCats(true)} className="px-2 py-1 rounded bg-slate-100">Todas</button>
+                  <button onClick={()=>setAllCats(false)} className="px-2 py-1 rounded bg-slate-100">Ninguna</button>
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {Object.entries(cats).map(([k,name])=> (
+                  <Toggle key={k} on={!!filters.cats[k]} onClick={()=>setFilters({...filters, cats:{...filters.cats,[k]:!filters.cats[k]}})}>{name}</Toggle>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium">Dificultad</label>
+                <div className="flex gap-2 text-xs">
+                  <button onClick={()=>setAllLvls(true)} className="px-2 py-1 rounded bg-slate-100">Todas</button>
+                  <button onClick={()=>setAllLvls(false)} className="px-2 py-1 rounded bg-slate-100">Ninguna</button>
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {Object.entries(DIFF).map(([k,lab])=> (
+                  <Toggle key={k} on={!!filters.diffs[k]} onClick={()=>setFilters({...filters, diffs:{...filters.diffs,[k]:!filters.diffs[k]}})}>{lab}</Toggle>
+                ))}
+              </div>
+              <div className="mt-2 text-xs text-slate-500">Preguntas disponibles: {available} / {total}</div>
+            </div>
+            <div className="col-span-full">
+              <label className="block text-sm font-medium">Modo de selección</label>
+              <div className="mt-2 flex flex-wrap gap-2 items-center">
+                <Toggle on={filters.onlyNew} onClick={()=>setFilters({...filters, onlyNew: !filters.onlyNew})}>Usar solo <strong>nuevas</strong> (no respondidas ni archivadas)</Toggle>
+                <Toggle on={filters.excludeArchived} onClick={()=>setFilters({...filters, excludeArchived: !filters.excludeArchived})}>Excluir <strong>archivadas</strong></Toggle>
+                <button onClick={()=>{ if(confirm('¿Seguro que quieres borrar el historial local de respondidas?')){ localStorage.removeItem(STORAGE.answered); location.reload(); } }} className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200">Reset historial</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Scoreboard({ players, scores, target, current }){
+      return (
+        <section className="p-4 rounded-2xl border bg-white shadow-sm">
+          <h3 className="text-lg font-bold mb-3">Marcador (meta: {target})</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {players.map((name,i)=> (
+              <div key={i} className={`p-3 rounded-xl ${i===current? 'ring-2 ring-slate-900':''}`}>
+                <div className="flex items-center justify-between text-sm">
+                  <div className="font-semibold">{name}</div>
+                  <div className="font-mono">{scores[i]} pts</div>
+                </div>
+                <div className="mt-2 h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-slate-900" style={{width: `${Math.min(100,(scores[i]/target)*100)}%`}}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Game({ setup, deck, answered, setAnswered, archived, setArchived, onEnd }){
+      const [idx, setIdx] = useState(0);
+      const [currentPlayer, setCurrentPlayer] = useState(0);
+      const [scores, setScores] = useState(Array(setup.playerCount).fill(0));
+      const [selected, setSelected] = useState(null);
+      const [locked, setLocked] = useState(false);
+      const [feedback, setFeedback] = useState(null);
+      const [timeLeft, setTimeLeft] = useState(setup.timerOn? setup.timePerQ: null);
+      const timerRef = useRef(null);
+      const q = deck[idx];
+
+      useEffect(()=>{
+        if(!setup.timerOn) return; setTimeLeft(setup.timePerQ);
+        if(timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(()=>{
+          setTimeLeft(t=>{
+            if(t===null) return null; if(t<=1){ clearInterval(timerRef.current); handleAnswer(-1,true); return 0; } return t-1;
+          });
+        }, 1000);
+        return ()=> timerRef.current && clearInterval(timerRef.current);
+      }, [idx, setup.timerOn, setup.timePerQ]);
+
+      if(!q){
+        return (
+          <section className="p-4 rounded-2xl border bg-white shadow-sm">
+            <h3 className="text-lg font-bold">No quedan preguntas con los filtros seleccionados.</h3>
+            <button onClick={onEnd} className="mt-3 px-3 py-2 rounded-xl bg-slate-900 text-white">Volver</button>
+          </section>
+        );
+      }
+
+      const next = () => {
+        const nextIdx = (idx + 1) % deck.length;
+        const nextPlayer = (currentPlayer + 1) % setup.playerCount;
+        setIdx(nextIdx); setCurrentPlayer(nextPlayer); setSelected(null); setLocked(false); setFeedback(null); setTimeLeft(setup.timerOn? setup.timePerQ: null);
+      };
+
+      const handleAnswer = (optIdx, dueToTimeout=false) => {
+        if(locked) return; setLocked(true);
+        const correct = optIdx === q.correct;
+        const sc = [...scores]; if(correct) sc[currentPlayer] += 1; setScores(sc);
+        const ans = new Set(answered); ans.add(q.id); setAnswered(ans);
+        lsSet(STORAGE.answered, Array.from(ans));
+        setFeedback({correct, dueToTimeout});
+        if(correct && sc[currentPlayer] >= setup.target){
+          setTimeout(()=>{
+            alert(`🏆 ¡${setup.players[currentPlayer]} gana!`);
+            onEnd();
+          }, 400);
+          return;
+        }
+        setTimeout(next, 800);
+      };
+
+      const toggleArchive = () => {
+        const arch = new Set(archived);
+        if(arch.has(q.id)) arch.delete(q.id); else arch.add(q.id);
+        setArchived(arch); lsSet(STORAGE.archived, Array.from(arch));
+      };
+
+      return (
+        <section className="p-4 rounded-2xl border bg-white shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2 items-center text-xs">
+              <span className="px-2 py-1 rounded bg-slate-100">{DEFAULT_CATS[q.cat] || q.cat}</span>
+              <span className="px-2 py-1 rounded bg-slate-100">{DIFF[q.diff] || q.diff}</span>
+            </div>
+            {setup.timerOn && (<div className={`text-sm font-mono ${timeLeft!==null && timeLeft<=5?'text-rose-600':'text-slate-700'}`}>⏱ {timeLeft}s</div>)}
+          </div>
+          <h2 className="mt-3 text-xl font-bold">{q.q}</h2>
+          <div className="mt-4 grid gap-2">
+            {q.options.map((op,i)=>{
+              const isC = i===q.correct; const picked = selected===i; const show = locked && (picked || isC);
+              const clsBase = 'w-full text-left px-4 py-3 rounded-xl border transition';
+              const cls = show? (isC? 'bg-emerald-50 border-emerald-300' : 'bg-rose-50 border-rose-300') : 'bg-white hover:bg-slate-50 border-slate-300';
+              return (
+                <button key={i} disabled={locked} onClick={()=>{ setSelected(i); handleAnswer(i,false); }} className={`${clsBase} ${cls}`}>
+                  <span className="font-medium">{String.fromCharCode(65+i)}.</span> {op}
+                </button>
+              );
+            })}
+          </div>
+          {locked && feedback && (
+            <div className="mt-3 text-sm">
+              {feedback.correct? (<span className="text-emerald-700 font-semibold">¡Correcto!</span>) : feedback.dueToTimeout? (<span className="text-rose-700">Tiempo agotado.</span>) : (<span className="text-rose-700">No es correcto.</span>)}
+              {q.exp && (<div className="mt-1 text-slate-700"><span className="font-semibold">Explicación:</span> {q.exp}</div>)}
+            </div>
+          )}
+          <div className="mt-4 flex items-center justify-between">
+            <button onClick={toggleArchive} className="px-3 py-2 rounded-xl border bg-slate-50 hover:bg-slate-100">{archived.has(q.id)? 'Desarchivar' : 'Archivar'} esta pregunta</button>
+            <div className="text-sm text-slate-500">#{q.id}</div>
+          </div>
+        </section>
+      );
+    }
+
+    function App(){
+      // ===== Estado base =====
+      const [setup, setSetup] = useState(lsGet(STORAGE.setup, { playerCount:2, players:['Jugador 1','Jugador 2','', ''], target:15, timerOn:false, timePerQ:25 }));
+      useEffect(()=>lsSet(STORAGE.setup, setup), [setup]);
+      const [started, setStarted] = useState(false);
+
+      const [answered, setAnswered] = useState(new Set(lsGet(STORAGE.answered, [])));
+      const [archived, setArchived] = useState(new Set(lsGet(STORAGE.archived, [])));
+
+      // Banco activo (combinable)
+      const [bank, setBank] = useState(EMBEDDED_BANK);
+      const [filters, setFilters] = useState({
+        cats: Object.fromEntries(Object.keys(DEFAULT_CATS).map(k=>[k,true])),
+        diffs: Object.fromEntries(Object.keys(DIFF).map(k=>[k,true])),
+        onlyNew: false,
+        excludeArchived: true,
+      });
+
+      // Derivados
+      const pool = useMemo(()=>{
+        let list = sanitize(bank.questions);
+        // Filtros de categoría/dificultad
+        list = list.filter(q => filters.cats[q.cat] && filters.diffs[q.diff]);
+        // Filtros de historial
+        if(filters.onlyNew){ list = list.filter(q => !answered.has(q.id) && !archived.has(q.id)); }
+        if(filters.excludeArchived){ list = list.filter(q => !archived.has(q.id)); }
+        return shuffle(list);
+      }, [bank, filters, answered, archived]);
+
+      // Importación
+      const importFiles = async (files) => {
+        const banks = [bank];
+        for(const file of files){
+          try { const text = await file.text(); const json = JSON.parse(text); banks.push(json); } catch(e){ alert('Error al leer '+file.name+': '+e.message); }
+        }
+        setBank(mergeBanks(banks));
+      };
+      const importURL = async (url) => {
+        try{ const json = await fetchJSON(url); setBank(mergeBanks([bank, json])); }
+        catch(e){ alert(e.message); }
+      };
+      const exportBank = () => {
+        const blob = new Blob([JSON.stringify(bank, null, 2)], {type:'application/json'});
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `bank-${bank.version||'local'}.json`; a.click();
+      };
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 py-6 text-slate-800">
+          <header className="flex items-center justify-between">
+            <h1 className="text-2xl sm:text-3xl font-extrabold">Trivial Kids ES — v7</h1>
+            <button onClick={()=>setStarted(false)} className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200">Nueva partida</button>
+          </header>
+
+          {!started ? (
+            <>
+              <BankManager bank={bank} setBank={setBank} answered={answered} archived={archived} onImportFiles={importFiles} onImportURL={importURL} onExport={exportBank} />
+              <Setup setup={setup} setSetup={setSetup} cats={bank.categories||DEFAULT_CATS} total={(bank.questions||[]).length} available={pool.length} filters={filters} setFilters={setFilters} />
+              <div className="mt-4 flex items-center justify-end">
+                <button disabled={pool.length===0} onClick={()=>setStarted(true)} className={`px-4 py-2 rounded-2xl font-semibold ${pool.length>0? 'bg-emerald-600 text-white hover:bg-emerald-700':'bg-slate-200 text-slate-500'}`}>¡Empezar!</button>
+              </div>
+              <HowTo />
+            </>
+          ) : (
+            <Game setup={setup} deck={pool} answered={answered} setAnswered={setAnswered} archived={archived} setArchived={setArchived} onEnd={()=>setStarted(false)} />
+          )}
+
+          <footer className="mt-8 text-center text-xs text-slate-500">Banco: {bank.questions?.length||0} preguntas • Filtradas: {pool.length} • Versión: {bank.version}</footer>
+        </div>
+      );
+    }
+
+    function HowTo(){
+      return (
+        <details className="mt-6 p-4 rounded-2xl border bg-white shadow-sm">
+          <summary className="cursor-pointer font-semibold">Cómo usar / Despliegue</summary>
+          <div className="mt-3 text-sm space-y-2 text-slate-700">
+            <p><strong>Importar preguntas:</strong> usa ficheros JSON con <code>{'{ version, categories, questions: [...] }'}</code>. Cada pregunta: <code>{'{ id, cat, diff, q, options:[4], correct, exp? }'}</code>. Las <em>IDs</em> deben ser únicas y se usan para distinguir nuevas vs respondidas.</p>
+            <p><strong>Seleccionar nuevas o archivadas:</strong> en la configuración activa “Usar solo nuevas” y/o “Excluir archivadas”. Puedes archivar/desarchivar una pregunta durante la partida.</p>
+            <p><strong>Publicación en GitHub Pages:</strong> guarda este archivo como <code>index.html</code> en un repositorio y habilita Pages (rama <code>main</code>, carpeta <code>root</code>). Luego podrás actualizar solo los JSON de <code>/questions</code> sin tocar el código.</p>
+          </div>
+        </details>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
