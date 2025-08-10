@@ -1,0 +1,109 @@
+{
+  "version": "pack1-v1",
+  "categories": {
+    "GEO": "Geografía",
+    "HIS": "Historia",
+    "LEN": "Lengua y Literatura",
+    "SCI": "Ciencia y Tecnología",
+    "CUL": "Cultura y Deporte",
+    "LANG": "Idiomas EN/FR",
+    "RIDDLE": "Adivinanzas",
+    "MEDIA": "Películas y Juegos",
+    "REL": "Religión"
+  },
+  "questions": [
+    {
+      "id": "GEO-001",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "¿Cuál es la capital de España?",
+      "options": ["Madrid", "Barcelona", "Sevilla", "Valencia"],
+      "correct": 0,
+      "exp": "Madrid es la capital de España desde el siglo XVI."
+    },
+    {
+      "id": "GEO-002",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "¿Qué océano baña las costas de Galicia?",
+      "options": ["Atlántico", "Pacífico", "Índico", "Ártico"],
+      "correct": 0,
+      "exp": "La costa gallega está bañada por el océano Atlántico."
+    },
+    {
+      "id": "GEO-003",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "¿Cuál es el río más largo de la Península Ibérica?",
+      "options": ["Tajo", "Ebro", "Guadalquivir", "Duero"],
+      "correct": 0,
+      "exp": "El río Tajo mide 1.007 km y cruza España y Portugal."
+    },
+    {
+      "id": "GEO-004",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "¿En qué continente está Kazajistán?",
+      "options": ["Asia", "Europa", "África", "Oceanía"],
+      "correct": 0,
+      "exp": "Kazajistán está en Asia Central."
+    },
+    {
+      "id": "GEO-005",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "¿Qué cordillera separa Francia y España?",
+      "options": ["Pirineos", "Alpes", "Apeninos", "Cárpatos"],
+      "correct": 0,
+      "exp": "Los Pirineos forman una frontera natural."
+    },
+    {
+      "id": "GEO-006",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "¿Qué país tiene más islas en el mundo?",
+      "options": ["Suecia", "Indonesia", "Filipinas", "Canadá"],
+      "correct": 0,
+      "exp": "Suecia tiene más de 260.000 islas."
+    },
+    {
+      "id": "GEO-007",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "¿Cuál es la capital de Mongolia?",
+      "options": ["Ulán Bator", "Astana", "Bishkek", "Tiflis"],
+      "correct": 0,
+      "exp": "Ulán Bator es la capital y ciudad más grande de Mongolia."
+    },
+    {
+      "id": "GEO-008",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "¿En qué mar desemboca el río Danubio?",
+      "options": ["Mar Negro", "Mar Caspio", "Mar Mediterráneo", "Mar del Norte"],
+      "correct": 0,
+      "exp": "El Danubio desemboca en el Mar Negro."
+    },
+    {
+      "id": "GEO-009",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "¿Cuál es el país más pequeño del mundo?",
+      "options": ["Ciudad del Vaticano", "Mónaco", "Nauru", "San Marino"],
+      "correct": 0,
+      "exp": "El Vaticano tiene unos 0,44 km²."
+    },
+    {
+      "id": "GEO-010",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "¿Cuál es el punto más alto de África?",
+      "options": ["Kilimanjaro", "Monte Kenia", "Ras Dashen", "Simien"],
+      "correct": 0,
+      "exp": "El Kilimanjaro en Tanzania alcanza 5.895 m."
+    }
+
+    // ⚠️ Aquí continuarían las demás categorías (HIS, LEN, SCI, CUL, LANG, RIDDLE, MEDIA, REL)
+    // cada una con sus 10 preguntas, siguiendo el mismo formato que GEO
+  ]
+}
