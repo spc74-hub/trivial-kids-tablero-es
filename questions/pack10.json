@@ -1,0 +1,1057 @@
+{
+  "version": "pack10-v1",
+  "categories": {
+    "GEO": "Geografía",
+    "HIS": "Historia",
+    "LEN": "Lengua y Literatura",
+    "SCI": "Ciencia y Tecnología",
+    "CUL": "Cultura y Deporte",
+    "LANG": "Idiomas EN/FR",
+    "RIDDLE": "Adivinanzas",
+    "MEDIA": "Películas y Juegos",
+    "REL": "Religión",
+    "MUS": "Música"
+  },
+  "questions": [
+    {
+      "id": "P10-001",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "Capital de Hungría",
+      "options": [
+        "Budapest",
+        "Praga",
+        "Viena",
+        "Bratislava"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-002",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "País con capital Lima",
+      "options": [
+        "Perú",
+        "Chile",
+        "Ecuador",
+        "Colombia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-003",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "Cordillera entre Francia y España",
+      "options": [
+        "Pirineos",
+        "Alpes",
+        "Apeninos",
+        "Cárpatos"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-004",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "Islas Canarias pertenecen a…",
+      "options": [
+        "España",
+        "Portugal",
+        "Marruecos",
+        "Francia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-005",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "País con capital Ulán Bator",
+      "options": [
+        "Mongolia",
+        "Kazajistán",
+        "Kirguisistán",
+        "Tayikistán"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-006",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "Mar que baña San Petersburgo",
+      "options": [
+        "Báltico",
+        "Negro",
+        "Norte",
+        "Caspio"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-007",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "País con más volcanes activos",
+      "options": [
+        "Indonesia",
+        "Islandia",
+        "Japón",
+        "México"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-008",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "Río que separa Texas y México en parte de su curso",
+      "options": [
+        "Río Bravo",
+        "Colorado",
+        "Misisipi",
+        "Columbia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-009",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Pintor de 'Guernica'",
+      "options": [
+        "Picasso",
+        "Dalí",
+        "Miró",
+        "Goya"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-010",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Año de inicio de la Guerra Civil Española",
+      "options": [
+        "1936",
+        "1931",
+        "1939",
+        "1923"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-011",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Emperador romano durante el máximo esplendor territorial (117)",
+      "options": [
+        "Trajano",
+        "Nerón",
+        "Julio César",
+        "Augusto"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-012",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Navegante portugués que rodeó África hasta la India",
+      "options": [
+        "Vasco da Gama",
+        "Magallanes",
+        "Caboto",
+        "Díaz"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-013",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Tratado que puso fin a la Guerra de los Siete Años",
+      "options": [
+        "París (1763)",
+        "Versalles",
+        "Utrecht",
+        "Amiens"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-014",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Rey español que expulsó a los jesuitas (1767)",
+      "options": [
+        "Carlos III",
+        "Felipe V",
+        "Carlos IV",
+        "Fernando VI"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-015",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Nombre del periodo japonés 1603–1868",
+      "options": [
+        "Edo (Tokugawa)",
+        "Meiji",
+        "Heian",
+        "Kamakura"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-016",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Año de la caída de Constantinopla",
+      "options": [
+        "1453",
+        "1204",
+        "1492",
+        "1571"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-017",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "Antónimo de 'rápido'",
+      "options": [
+        "lento",
+        "ligero",
+        "veloz",
+        "vivo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-018",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "¿Qué es una interjección?",
+      "options": [
+        "Expresa emociones",
+        "Une oraciones",
+        "Califica al nombre",
+        "Sustituye al nombre"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-019",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Identifica diptongo",
+      "options": [
+        "tierra",
+        "po-e-ta",
+        "ra-íz",
+        "frí-o"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-020",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Figura: 'Sus ojos son dos luceros'",
+      "options": [
+        "metáfora",
+        "hipérbole",
+        "anáfora",
+        "sinécdoque"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-021",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "Función de 'aunque'",
+      "options": [
+        "conjunción concesiva",
+        "pronombre relativo",
+        "adjetivo",
+        "artículo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-022",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "Autor de 'Campos de Castilla'",
+      "options": [
+        "Antonio Machado",
+        "Juan Ramón Jiménez",
+        "Unamuno",
+        "Azorín"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-023",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "Verso de 12 sílabas",
+      "options": [
+        "dodecasílabo",
+        "endecasílabo",
+        "alejandrino",
+        "heptasílabo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-024",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "'Beatus ille' significa…",
+      "options": [
+        "feliz aquel (vida sencilla)",
+        "aprovecha el día",
+        "huida del tiempo",
+        "amor cortés"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-025",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Planeta con grandes anillos visibles",
+      "options": [
+        "Saturno",
+        "Júpiter",
+        "Urano",
+        "Neptuno"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-026",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Unidad de masa en SI",
+      "options": [
+        "kilogramo",
+        "gramo",
+        "libra",
+        "onza"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-027",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "Función principal de los glóbulos blancos",
+      "options": [
+        "defensa inmunitaria",
+        "transporte de oxígeno",
+        "coagulación",
+        "digestión"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-028",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "Órgano que produce insulina",
+      "options": [
+        "páncreas",
+        "hígado",
+        "bazo",
+        "tiroides"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-029",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Ley de Kepler: 'órbitas…'",
+      "options": [
+        "elípticas",
+        "circulares perfectas",
+        "parabólicas",
+        "hiperbólicas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-030",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Velocidad de la luz (m/s)",
+      "options": [
+        "3×10^8",
+        "3×10^6",
+        "3×10^5",
+        "3×10^3"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-031",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "Carga del protón",
+      "options": [
+        "+1e",
+        "-1e",
+        "0",
+        "+2e"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-032",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "Enlace que comparte electrones",
+      "options": [
+        "covalente",
+        "iónico",
+        "metálico",
+        "puente de hidrógeno"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-033",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Equipo de Lionel Messi (larga etapa)",
+      "options": [
+        "FC Barcelona",
+        "Real Madrid",
+        "PSG",
+        "Manchester City"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-034",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Danza típica gallega",
+      "options": [
+        "muñeira",
+        "jota",
+        "sardana",
+        "fandango"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-035",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "Pintor de 'La rendición de Breda'",
+      "options": [
+        "Velázquez",
+        "Goya",
+        "Zurbarán",
+        "El Greco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-036",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "Director de 'Campeones' (2018)",
+      "options": [
+        "Javier Fesser",
+        "Bayona",
+        "Amenábar",
+        "Trueba"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-037",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Año del Mundial de España en casa",
+      "options": [
+        "1982",
+        "1992",
+        "2002",
+        "1998"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-038",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Escritor de 'El juego del ángel'",
+      "options": [
+        "Carlos Ruiz Zafón",
+        "Marías",
+        "Reverte",
+        "Delibes"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-039",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Campo del Athletic Club",
+      "options": [
+        "San Mamés",
+        "Anoeta",
+        "Mendizorroza",
+        "El Sadar"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-040",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Corriente artística de Dalí",
+      "options": [
+        "surrealismo",
+        "cubismo",
+        "impresionismo",
+        "barroco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-041",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "EN: Plural de 'mouse' (informática)",
+      "options": [
+        "mice",
+        "mouses",
+        "mouse",
+        "mices"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-042",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "FR: Contrario de 'grand' (talla)",
+      "options": [
+        "petit",
+        "gros",
+        "haut",
+        "long"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-043",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "EN: Future — I ____ travel tomorrow.",
+      "options": [
+        "will",
+        "am",
+        "have",
+        "had"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-044",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "FR: Passé composé (nous) de 'aller'",
+      "options": [
+        "sommes allé(e)s",
+        "allons",
+        "allions",
+        "irons"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-045",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "EN: Conditional — If I were you, I ___",
+      "options": [
+        "would study",
+        "will study",
+        "study",
+        "am studying"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-046",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "FR: Subjonctif — Il faut que je ___",
+      "options": [
+        "fasse",
+        "fais",
+        "ferai",
+        "ferais"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-047",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "EN: Non-finite verb ending in -ing",
+      "options": [
+        "gerund/participle",
+        "infinitive",
+        "imperative",
+        "subjunctive"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-048",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "FR: Conditionnel présent (ils) de 'venir'",
+      "options": [
+        "viendraient",
+        "viennent",
+        "sont venus",
+        "viendront"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-049",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Tiene hojas y no es planta",
+      "options": [
+        "el libro",
+        "el árbol",
+        "la mesa",
+        "el cuaderno"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-050",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Se rompe al nombrarlo",
+      "options": [
+        "el silencio",
+        "el cristal",
+        "la promesa",
+        "el espejo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-051",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Todos lo abren, pocos lo cierran",
+      "options": [
+        "el paraguas",
+        "la puerta",
+        "el libro",
+        "el grifo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-052",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Entra dura y sale blanda",
+      "options": [
+        "el chicle",
+        "la goma",
+        "la esponja",
+        "el pan"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-053",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "Es tuyo, pero lo usan más los demás",
+      "options": [
+        "tu nombre",
+        "tu sombra",
+        "tu casa",
+        "tu ropa"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-054",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "Siempre está por llegar pero nunca llega",
+      "options": [
+        "el mañana",
+        "el tren",
+        "la lluvia",
+        "el sol"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-055",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "No tiene boca y te habla; no tiene oídos y te oye",
+      "options": [
+        "el teléfono",
+        "el eco",
+        "la radio",
+        "la tele"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-056",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "Vuela sin alas y llora sin ojos",
+      "options": [
+        "la nube",
+        "el viento",
+        "el eco",
+        "la lluvia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-057",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Héroe de 'Pokémon'",
+      "options": [
+        "Ash Ketchum",
+        "Link",
+        "Mario",
+        "Sonic"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-058",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Película sobre juguetes que cobran vida",
+      "options": [
+        "Toy Story",
+        "Cars",
+        "Shrek",
+        "Coco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-059",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Director de 'Origen'",
+      "options": [
+        "Christopher Nolan",
+        "Ridley Scott",
+        "James Cameron",
+        "Peter Jackson"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-060",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Juego donde capturas criaturas con Poké Balls",
+      "options": [
+        "Pokémon",
+        "Monster Hunter",
+        "Yo-kai Watch",
+        "Digimon"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-061",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Compositor de 'La La Land'",
+      "options": [
+        "Justin Hurwitz",
+        "Hans Zimmer",
+        "John Williams",
+        "Alexandre Desplat"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-062",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Consola de Nintendo de 2001 (sobremesa)",
+      "options": [
+        "GameCube",
+        "Wii",
+        "N64",
+        "Wii U"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-063",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Estudio de 'Zelda: Tears of the Kingdom'",
+      "options": [
+        "Nintendo EPD",
+        "Retro Studios",
+        "Monolith Soft",
+        "Game Freak"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-064",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Año estreno de 'Avatar'",
+      "options": [
+        "2009",
+        "2012",
+        "2006",
+        "2015"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-065",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Día sagrado semanal judío",
+      "options": [
+        "sábado",
+        "domingo",
+        "viernes",
+        "lunes"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-066",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Sacramento cristiano de inicio de vida cristiana",
+      "options": [
+        "Bautismo",
+        "Confirmación",
+        "Matrimonio",
+        "Eucaristía"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-067",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Cinco pilares del islam: ¿cuál NO lo es?",
+      "options": [
+        "Peregrinación menor (Umrah)",
+        "Profesión de fe",
+        "Oración",
+        "Limosna"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-068",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Monte sagrado del hinduismo",
+      "options": [
+        "Kailash",
+        "Sinaí",
+        "Ararat",
+        "Ararat"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-069",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Idiomas en los que está la Biblia hebrea (Tanaj) principalmente",
+      "options": [
+        "Hebreo y algo de arameo",
+        "Latín",
+        "Griego",
+        "Árabe"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-070",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Reforma protestante: año de las 95 tesis",
+      "options": [
+        "1517",
+        "1492",
+        "1521",
+        "1545"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-071",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Concilio que definió la doctrina trinitaria temprana",
+      "options": [
+        "Nicea",
+        "Trento",
+        "Vaticano I",
+        "Calcedonia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-072",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Fundador del budismo zen en China (trad.)",
+      "options": [
+        "Bodhidharma",
+        "Nagarjuna",
+        "Asanga",
+        "Atisha"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-073",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Familia de la flauta travesera",
+      "options": [
+        "viento madera",
+        "viento metal",
+        "cuerda",
+        "percusión"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-074",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Símbolo que baja medio tono",
+      "options": [
+        "bemol",
+        "sostenido",
+        "becuadro",
+        "calderón"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-075",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Compositor de 'El Cascanueces'",
+      "options": [
+        "Chaikovski",
+        "Beethoven",
+        "Mozart",
+        "Brahms"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-076",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Intervalo de 9 semitonos",
+      "options": [
+        "sexta menor",
+        "quinta justa",
+        "cuarta aumentada",
+        "tercera mayor"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-077",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Compás 5/4 es un compás…",
+      "options": [
+        "irregular",
+        "simple",
+        "compuesto",
+        "binario"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-078",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Dominante en tonalidad de Do mayor",
+      "options": [
+        "Sol (V)",
+        "Fa (IV)",
+        "La (VI)",
+        "Re (II)"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-079",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Cadencia frigia en modo menor",
+      "options": [
+        "iv6–V",
+        "ii–V–I",
+        "V–I",
+        "IV–I"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P10-080",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Tempo 'vivace' indica…",
+      "options": [
+        "muy animado/rápido",
+        "lento",
+        "moderado",
+        "muy lento"
+      ],
+      "correct": 0
+    }
+  ]
+}
