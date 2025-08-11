@@ -1,0 +1,1057 @@
+{
+  "version": "pack8-v1",
+  "categories": {
+    "GEO": "Geografía",
+    "HIS": "Historia",
+    "LEN": "Lengua y Literatura",
+    "SCI": "Ciencia y Tecnología",
+    "CUL": "Cultura y Deporte",
+    "LANG": "Idiomas EN/FR",
+    "RIDDLE": "Adivinanzas",
+    "MEDIA": "Películas y Juegos",
+    "REL": "Religión",
+    "MUS": "Música"
+  },
+  "questions": [
+    {
+      "id": "P8-001",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "Capital de Croacia",
+      "options": [
+        "Zagreb",
+        "Split",
+        "Dubrovnik",
+        "Zadar"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-002",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "Mar que baña Grecia",
+      "options": [
+        "Mediterráneo",
+        "Báltico",
+        "Caribe",
+        "Rojo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-003",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "Río que atraviesa Budapest",
+      "options": [
+        "Danubio",
+        "Tíber",
+        "Sena",
+        "Rin"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-004",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "País cuya capital es Hanói",
+      "options": [
+        "Vietnam",
+        "Tailandia",
+        "Camboya",
+        "Laos"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-005",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "Islas Azores pertenecen a…",
+      "options": [
+        "Portugal",
+        "España",
+        "Francia",
+        "Italia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-006",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "Cordillera principal de Irán",
+      "options": [
+        "Zagros",
+        "Himalaya",
+        "Cáucaso",
+        "Andes"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-007",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "País con capital Ereván",
+      "options": [
+        "Armenia",
+        "Georgia",
+        "Azerbaiyán",
+        "Kazajistán"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-008",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "Estrecho entre España y Marruecos",
+      "options": [
+        "Gibraltar",
+        "Bósforo",
+        "Dardanelos",
+        "Malaca"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-009",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Pueblo que construyó las pirámides de Giza",
+      "options": [
+        "Egipcios",
+        "Griegos",
+        "Romanos",
+        "Persas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-010",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Conquistador del Imperio Inca",
+      "options": [
+        "Francisco Pizarro",
+        "Hernán Cortés",
+        "Magallanes",
+        "Balboa"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-011",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Año de la Revolución Francesa",
+      "options": [
+        "1789",
+        "1776",
+        "1812",
+        "1848"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-012",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Reina inglesa conocida como 'la Reina Virgen'",
+      "options": [
+        "Isabel I",
+        "Victoria",
+        "Ana",
+        "María I"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-013",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Batalla naval donde murió Nelson",
+      "options": [
+        "Trafalgar",
+        "Lepanto",
+        "Salamina",
+        "Gravelinas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-014",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Guerra civil en EE. UU. (inicio)",
+      "options": [
+        "1861",
+        "1775",
+        "1812",
+        "1865"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-015",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Tratado que dividió el mundo entre España y Portugal (1494)",
+      "options": [
+        "Tordesillas",
+        "Alcaçovas",
+        "Utrecht",
+        "Versalles"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-016",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Cultura que floreció en Yucatán (periodo clásico)",
+      "options": [
+        "Maya",
+        "Azteca",
+        "Olmeca",
+        "Zapoteca"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-017",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "Antónimo de 'pequeño'",
+      "options": [
+        "grande",
+        "mínimo",
+        "breve",
+        "corto"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-018",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "¿Qué es un adverbio?",
+      "options": [
+        "Modifica verbo/adjetivo",
+        "Nombra cosas",
+        "Califica sustantivo",
+        "Une oraciones"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-019",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Señala el diptongo",
+      "options": [
+        "cielo",
+        "po-e-ta",
+        "ra-íz",
+        "ma-íz"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-020",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Figura: 'Las estrellas nos miran'",
+      "options": [
+        "personificación",
+        "metáfora",
+        "hipérbole",
+        "anáfora"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-021",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "Función de 'que' en 'el niño que vino'",
+      "options": [
+        "pronombre relativo",
+        "conjunción",
+        "artículo",
+        "adverbio"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-022",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "Autor de 'Fortunata y Jacinta'",
+      "options": [
+        "Benito Pérez Galdós",
+        "Pío Baroja",
+        "Valle-Inclán",
+        "Clarín"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-023",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "Verso de arte mayor",
+      "options": [
+        "endecasílabo",
+        "heptasílabo",
+        "octosílabo",
+        "pentasílabo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-024",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "Figura: repetición al inicio de verso",
+      "options": [
+        "anáfora",
+        "elipsis",
+        "oxímoron",
+        "ironía"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-025",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Fórmula del dióxido de carbono",
+      "options": [
+        "CO2",
+        "CO",
+        "O2",
+        "H2O"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-026",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Órgano que filtra la sangre",
+      "options": [
+        "riñón",
+        "hígado",
+        "pulmón",
+        "páncreas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-027",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "Unidad SI de energía",
+      "options": [
+        "joule",
+        "watt",
+        "newton",
+        "tesla"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-028",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "Planeta conocido como 'gigante de hielo'",
+      "options": [
+        "Urano",
+        "Júpiter",
+        "Marte",
+        "Mercurio"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-029",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Ley de Boyle relaciona…",
+      "options": [
+        "presión y volumen",
+        "masa y aceleración",
+        "tensión y corriente",
+        "fuerza y área"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-030",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Partícula con carga -1e",
+      "options": [
+        "electrón",
+        "protón",
+        "neutrón",
+        "positrón"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-031",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "Constante de gravitación G ≈",
+      "options": [
+        "6,67×10^-11 N·m²/kg²",
+        "9,8 m/s²",
+        "3×10^8 m/s",
+        "1,6×10^-19 C"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-032",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "La fotosíntesis ocurre en el…",
+      "options": [
+        "cloroplasto",
+        "mitocondria",
+        "núcleo",
+        "ribosoma"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-033",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Bebida típica valenciana",
+      "options": [
+        "horchata",
+        "cidra",
+        "mosto",
+        "mate"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-034",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Deporte del 'smash' y 'voleas'",
+      "options": [
+        "tenis",
+        "balonmano",
+        "rugby",
+        "baloncesto"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-035",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "Director de 'El laberinto del fauno'",
+      "options": [
+        "Guillermo del Toro",
+        "Amenábar",
+        "Bayona",
+        "Almodóvar"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-036",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "La jota es un baile de…",
+      "options": [
+        "Aragón",
+        "Andalucía",
+        "Galicia",
+        "Cataluña"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-037",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Goya a Mejor Película 2023 (España)",
+      "options": [
+        "As bestas",
+        "Alcarràs",
+        "Modelo 77",
+        "Cinco lobitos"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-038",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Autor de 'Niebla'",
+      "options": [
+        "Unamuno",
+        "Baroja",
+        "Valle-Inclán",
+        "Azorín"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-039",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Estadio San Mamés está en…",
+      "options": [
+        "Bilbao",
+        "San Sebastián",
+        "Vitoria",
+        "Pamplona"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-040",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Ballet con Odette y Odile",
+      "options": [
+        "El lago de los cisnes",
+        "Giselle",
+        "Don Quijote",
+        "El cascanueces"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-041",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "EN: Opposite of 'early'",
+      "options": [
+        "late",
+        "soon",
+        "fast",
+        "quick"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-042",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "FR: Traduire — 'Bonjour!'",
+      "options": [
+        "¡Hola!",
+        "¡Gracias!",
+        "¡Adiós!",
+        "¡Perdón!"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-043",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "EN: Present perfect — She ___ already finished.",
+      "options": [
+        "has",
+        "have",
+        "had",
+        "is"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-044",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "FR: 'Je ___ de la musique' (present)",
+      "options": [
+        "écoute",
+        "écouté",
+        "écouter",
+        "écoutes"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-045",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "EN: 3rd conditional — If I ___, I would have told you.",
+      "options": [
+        "had known",
+        "knew",
+        "have known",
+        "would know"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-046",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "FR: Subjonctif — Il faut que nous ___",
+      "options": [
+        "fassions",
+        "faisons",
+        "ferions",
+        "ferons"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-047",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "EN: Non-defining relative clause uses…",
+      "options": [
+        "which",
+        "that",
+        "what",
+        "whoever"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-048",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "FR: Conditionnel passé (tu) de 'aller'",
+      "options": [
+        "serais allé(e)",
+        "es allé",
+        "étais allé",
+        "irais"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-049",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Corre y no tiene piernas",
+      "options": [
+        "el río",
+        "el viento",
+        "el reloj",
+        "la sombra"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-050",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Va por el agua y no se moja",
+      "options": [
+        "la sombra",
+        "el sol",
+        "la nube",
+        "la barca"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-051",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Tiene agujeros y guarda agua",
+      "options": [
+        "la esponja",
+        "el colador",
+        "la red",
+        "la nube"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-052",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Cuanto más me quitas, más grande soy",
+      "options": [
+        "el agujero",
+        "el silencio",
+        "la deuda",
+        "la sombra"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-053",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "Me ves en un momento dos veces, en un minuto una",
+      "options": [
+        "la 'm'",
+        "la luna",
+        "el sol",
+        "el eco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-054",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "No soy ser vivo, pero crezco; no tengo pulmones y necesito aire",
+      "options": [
+        "el fuego",
+        "el hongo",
+        "la nube",
+        "el hielo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-055",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "Sin manos pinto, sin voz hablo",
+      "options": [
+        "la foto",
+        "la radio",
+        "el libro",
+        "la tele"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-056",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "Me sigues sin tocarme; solo me ves con luz",
+      "options": [
+        "la sombra",
+        "el nombre",
+        "el eco",
+        "el pensamiento"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-057",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Plomero de Nintendo",
+      "options": [
+        "Mario",
+        "Luigi",
+        "Wario",
+        "Toad"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-058",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Franquicia con un erizo azul",
+      "options": [
+        "Sonic",
+        "Kirby",
+        "Yoshi",
+        "Donkey Kong"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-059",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Película Pixar sobre un monstruo simpático",
+      "options": [
+        "Monstruos, S.A.",
+        "WALL·E",
+        "Up",
+        "Soul"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-060",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Juego de Nintendo con lanzamiento de tinta",
+      "options": [
+        "Splatoon",
+        "ARMS",
+        "Pikmin",
+        "Mario Kart"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-061",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Compositor de 'El Señor de los Anillos'",
+      "options": [
+        "Howard Shore",
+        "John Williams",
+        "Hans Zimmer",
+        "Alan Silvestri"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-062",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Consola sucesora de Game Boy Advance",
+      "options": [
+        "Nintendo DS",
+        "3DS",
+        "PSP",
+        "Vita"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-063",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Director de 'Blade Runner 2049'",
+      "options": [
+        "Denis Villeneuve",
+        "Ridley Scott",
+        "Nolan",
+        "Cameron"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-064",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Año de 'The Legend of Zelda: Ocarina of Time'",
+      "options": [
+        "1998",
+        "1996",
+        "2000",
+        "2002"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-065",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Libro sagrado del islam",
+      "options": [
+        "Corán",
+        "Biblia",
+        "Torá",
+        "Vedas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-066",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Lugar de culto judío",
+      "options": [
+        "Sinagoga",
+        "Iglesia",
+        "Mezquita",
+        "Pagoda"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-067",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Pilar del islam: limosna",
+      "options": [
+        "Zakat",
+        "Salat",
+        "Sawm",
+        "Hajj"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-068",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Sede del papa",
+      "options": [
+        "Ciudad del Vaticano",
+        "Roma",
+        "Asís",
+        "Jerusalén"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-069",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Idioma del Nuevo Testamento (principal)",
+      "options": [
+        "Griego koiné",
+        "Latín",
+        "Arameo",
+        "Hebreo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-070",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Concilio que reformó la liturgia en el s. XX",
+      "options": [
+        "Vaticano II",
+        "Vaticano I",
+        "Trento",
+        "Nicea"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-071",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Fundador del taoísmo (trad.)",
+      "options": [
+        "Lao-Tsé",
+        "Confucio",
+        "Buda",
+        "Zaratustra"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-072",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Festividad judía de las luces",
+      "options": [
+        "Janucá",
+        "Pésaj",
+        "Yom Kipur",
+        "Rosh Hashaná"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-073",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Instrumento de viento metal",
+      "options": [
+        "Trompeta",
+        "Clarinete",
+        "Flauta",
+        "Oboe"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-074",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Figura que dura 4 tiempos (4/4)",
+      "options": [
+        "Redonda",
+        "Blanca",
+        "Negra",
+        "Corchea"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-075",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Compositor de 'Claro de luna'",
+      "options": [
+        "Beethoven",
+        "Debussy",
+        "Chopin",
+        "Bach"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-076",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Intervalo de 5 semitonos",
+      "options": [
+        "Cuarta justa",
+        "Tercera mayor",
+        "Segunda mayor",
+        "Quinta justa"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-077",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Compás típico de la tarantela",
+      "options": [
+        "6/8",
+        "3/4",
+        "2/4",
+        "5/4"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-078",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Acorde mayor (tríada)",
+      "options": [
+        "1, 3, 5",
+        "1, ♭3, 5",
+        "1, 3, ♭5",
+        "1, 4, 5"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-079",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Cadencia rota/clásica",
+      "options": [
+        "V–VI",
+        "V–I",
+        "IV–I",
+        "ii–V"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P8-080",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Tempo 'andante' indica…",
+      "options": [
+        "andando, moderado",
+        "muy lento",
+        "muy rápido",
+        "lento"
+      ],
+      "correct": 0
+    }
+  ]
+}
