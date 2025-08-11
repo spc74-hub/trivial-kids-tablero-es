@@ -15,22 +15,19 @@
     html, body, #root { height: 100%; }
     .cell { transition: transform .08s ease; }
     .cell:hover { transform: translateY(-2px) scale(1.01); }
-    .die { width: 48px; height: 48px; border-radius: 12px; display:flex; align-items:center; justify-content:center; font-weight:800; }
-    .dot { width: 12px; height: 12px; border-radius: 9999px; display:inline-block; margin-right:6px; }
-    .token { width: 18px; height: 18px; border-radius: 9999px; border:2px solid #0f172a; box-shadow: 0 1px 0 rgba(0,0,0,.25); }
   </style>
 </head>
 <body class="min-h-screen">
   <div id="root"></div>
 
   <script type="text/babel" data-presets="env,react">
-    const { useEffect, useMemo, useRef, useState } = React;
+    const { useEffect, useMemo, useState } = React;
 
     // ====== Persistencia simple ======
     const STORAGE = {
-      setup: 'tk_tablero_setup_v2',
-      theme: 'tk_theme_v2',
-      answered: 'tk_answered_ids_v2'
+      setup: 'tk_tablero_setup_v3',
+      theme: 'tk_theme_v3',
+      answered: 'tk_answered_ids_v3'
     };
 
     function useLocalStorage(key, initial){
@@ -71,42 +68,65 @@
       EXPERT:{label:'Muy difícil', cls: dark? 'bg-rose-900 text-rose-200 border border-rose-700':'bg-rose-100 text-rose-800 border border-rose-300'}
     });
 
-    // ====== Aleatoriedad con semilla (para barajar preguntas y opciones) ======
+    // ====== Aleatoriedad con semilla ======
     function rng(seed){ let s = seed>>>0; return ()=>{ s = (s*1664525+1013904223)>>>0; return s/0x100000000; }; }
     function shuffleWithSeed(arr, seed){ const a=[...arr]; const R=rng(seed); for(let i=a.length-1;i>0;i--){ const j=Math.floor(R()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
 
     // ====== Carga de preguntas desde manifest ======
     async function loadAllQuestions() {
-      // Cargamos manifest y luego cada pack
       const mf = await fetch('questions/manifest.json').then(r=>r.json());
       const files = (mf && mf.files) || [];
       const datas = await Promise.all(files.map(p=>fetch(p).then(r=>r.json()).catch(()=>null)));
       let list = [];
       datas.forEach(d=>{ if(d && Array.isArray(d.questions)) list = list.concat(d.questions); });
-      // saneado mínimo
       list = list.filter(q => q && q.q && Array.isArray(q.options) && q.options.length===4 && typeof q.correct==='number');
       return list;
     }
 
-    // ====== Tablero (24 casillas alrededor) ======
-    // Generamos un anillo 5x5 sin centro, con 24 celdas. Algunas son "quesito".
+    // ====== Colores de jugadores y componentes visuales ======
+    const PLAYER_COLORS = ['bg-rose-500','bg-sky-500','bg-emerald-500','bg-amber-500'];
+    function Token({index, title}) {
+      const bg = PLAYER_COLORS[index % PLAYER_COLORS.length];
+      return (
+        <div className={`w-6 h-6 rounded-full border-2 border-slate-900 dark:border-white flex items-center justify-center text-[11px] font-bold text-white ${bg}`} title={title}>
+          {index+1}
+        </div>
+      );
+    }
+    function Die({value}) {
+      const p = (x,y)=><circle cx={x} cy={y} r="4" />;
+      const faces = {
+        1:[p(24,24)],
+        2:[p(12,12),p(36,36)],
+        3:[p(12,12),p(24,24),p(36,36)],
+        4:[p(12,12),p(36,12),p(12,36),p(36,36)],
+        5:[p(12,12),p(36,12),p(24,24),p(12,36),p(36,36)],
+        6:[p(12,12),p(36,12),p(12,24),p(36,24),p(12,36),p(36,36)]
+      }[value||0] || [];
+      return (
+        <svg width="48" height="48" viewBox="0 0 48 48" className="rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-800">
+          <g fill="currentColor" className="text-slate-900 dark:text-white">{faces}</g>
+        </svg>
+      );
+    }
+
+    // ====== Tablero (24 casillas alrededor, 1 quesito por categoría) ======
     function buildBoard(activeCats){
-      // repetimos categorías alrededor del anillo
-      const cats = activeCats.length? activeCats: ['GEO','HIS','LEN','SCI','CUL','LANG','RIDDLE','MEDIA','REL','MUS'];
-      const ringIdx = [
+      const ring = [
         [0,0],[1,0],[2,0],[3,0],[4,0],
         [4,1],[4,2],[4,3],[4,4],
         [3,4],[2,4],[1,4],[0,4],
-        [0,3],[0,2],[0,1]
+        [0,3],[0,2],[0,1],
+        [1,1],[2,1],[3,1],[3,2],[3,3],[2,3],[1,3],[1,2]
       ];
-      // Añadimos también intermedias para tener 24
-      const extra = [[2,1],[3,1],[3,2],[2,3],[1,3],[1,2],[1,1],[2,2],[3,3]]; // 9 más => 25, quitamos centro (2,2)
-      const ring = [...ringIdx, ...extra.filter(p=>!(p[0]===2 && p[1]===2))].slice(0,24);
-      const cells = ring.map((pos, i)=>{
-        const cat = cats[i % cats.length];
-        const wedge = (i % Math.floor(24/Math.min(cats.length,6))===0); // cada cierto número marcamos quesito
-        return { i, pos, cat, wedge };
-      });
+      const cats = activeCats.length ? activeCats : ['GEO','HIS','LEN','SCI','CUL','LANG','RIDDLE','MEDIA','REL','MUS'];
+      const cells = ring.map((pos,i)=>({ i, pos, cat: cats[i%cats.length], wedge:false }));
+      const seen = new Set();
+      for(let i=0;i<cells.length;i++){
+        const c = cells[i];
+        if(!seen.has(c.cat)){ c.wedge=true; seen.add(c.cat); }
+        if(seen.size===cats.length) break;
+      }
       return cells;
     }
 
@@ -127,8 +147,6 @@
       const [allQuestions,setAllQuestions] = useState([]);
       const [loading,setLoading] = useState(true);
       const [error,setError] = useState('');
-
-      // answered ids para evitar repetir si solo nuevas
       const [answered,setAnswered] = useLocalStorage(STORAGE.answered,[]);
 
       useEffect(()=>{ (async()=>{
@@ -137,16 +155,13 @@
         finally{ setLoading(false); }
       })(); },[]);
 
-      // Estado de partida con tablero
-      const [game,setGame] = useState(null); // {seed, board, deckByCat, players:[{name,pos,wedges:Set}], turn, rolling:boolean, lastRoll}
+      const [game,setGame] = useState(null);
 
       function startGame(){
         const seed = Date.now();
-        // pool filtrado por categorías y dificultad
         const diffs = Object.entries(setup.difficulties).filter(([,v])=>v).map(([k])=>k);
         let pool = allQuestions.filter(q => activeCats.includes(q.cat) && diffs.includes(q.diff));
         if(setup.onlyNew){ pool = pool.filter(q=>!answered.includes(q.id)); }
-        // Mezclamos preguntas y también sus opciones
         const poolShuffled = shuffleWithSeed(pool, seed);
         const withOpt = poolShuffled.map((q,idx)=>{
           const idxs=[0,1,2,3];
@@ -155,29 +170,15 @@
           const correct = order.indexOf(q.correct);
           return {...q, options, correct};
         });
-        // Agrupar por categoría para facilitar extracción
-        const deckByCat = {};
-        activeCats.forEach(c=> deckByCat[c] = []);
+        const deckByCat = {}; activeCats.forEach(c=> deckByCat[c] = []);
         withOpt.forEach(q=>{ if(deckByCat[q.cat]) deckByCat[q.cat].push(q); });
-        // Construir tablero
         const board = buildBoard(activeCats);
-        // Jugadores
-        const players = Array.from({length: setup.playerCount}).map((_,i)=>({
-          name: setup.players[i] || `Jugador ${i+1}`,
-          pos: 0,
-          wedges: {}, // cat -> true
-        }));
+        const players = Array.from({length: setup.playerCount}).map((_,i)=>({ name: setup.players[i] || `Jugador ${i+1}`, pos: 0, wedges: {} }));
         setGame({ seed, board, deckByCat, players, turn:0, rolling:false, lastRoll:null, state:'idle' });
       }
 
       function nextTurn(correct){
-        setGame(g=>{
-          if(!g) return g;
-          // Si acierta, repite turno; si falla, pasa al siguiente
-          if(correct) return { ...g, state:'idle' };
-          const next = (g.turn+1)%g.players.length;
-          return { ...g, turn: next, state:'idle' };
-        });
+        setGame(g=>{ if(!g) return g; if(correct) return { ...g, state:'idle' }; const next=(g.turn+1)%g.players.length; return { ...g, turn:next, state:'idle' }; });
       }
 
       function rollDie(){
@@ -186,56 +187,39 @@
           setGame(g=>{
             if(!g) return g;
             const n = Math.floor(Math.random()*6)+1;
-            // mover jugador actual
             const p = [...g.players];
             const me = { ...p[g.turn] };
             me.pos = (me.pos + n) % g.board.length;
             p[g.turn] = me;
-            return { ...g, players: p, rolling:false, lastRoll:n, state:'landed' };
+            return { ...g, players:p, rolling:false, lastRoll:n, state:'landed' };
           });
-        }, 350);
+        }, 300);
       }
 
       function askQuestionFor(cat){
         setGame(g=>{
-          if(!g) return g;
-          const pile = g.deckByCat[cat]||[];
-          if(pile.length===0){
-            alert('Sin preguntas disponibles para esta categoría con los filtros actuales.');
-            return { ...g, state:'idle' };
-          }
-          const q = pile.shift(); // saca una
+          if(!g) return g; const pile = g.deckByCat[cat]||[]; if(pile.length===0){ alert('Sin preguntas disponibles para esta categoría.'); return { ...g, state:'idle' }; }
+          const q = pile.shift();
           return { ...g, deckByCat:{...g.deckByCat,[cat]:pile}, currentQ:q, state:'asking' };
         });
       }
 
       function answer(idx){
         setGame(g=>{
-          if(!g) return g;
-          const q = g.currentQ; if(!q) return g;
-          const isCorrect = (idx===q.correct);
-          // Guardar id como respondida
+          if(!g) return g; const q=g.currentQ; if(!q) return g; const isCorrect = (idx===q.correct);
           try{ if(!answered.includes(q.id)){ setAnswered([...answered,q.id]); } }catch{}
-          // Si es casilla de quesito y acierta -> añade wedge
           const cell = g.board[g.players[g.turn].pos];
-          const p = [...g.players];
-          const me = { ...p[g.turn] };
-          if(isCorrect){
-            if(cell.wedge){ me.wedges = { ...me.wedges, [cell.cat]: true }; }
-          }
-          p[g.turn] = me;
+          const p = [...g.players]; const me = { ...p[g.turn] };
+          if(isCorrect && cell.wedge){ me.wedges = { ...me.wedges, [cell.cat]: true }; }
+          p[g.turn]=me;
           const win = Object.keys(me.wedges).length >= activeCats.length;
-          if(win){
-            return { ...g, players:p, currentQ:null, state:'win' };
-          }
+          if(win){ return { ...g, players:p, currentQ:null, state:'win' }; }
           return { ...g, players:p, currentQ:null, state:'feedback', lastCorrect:isCorrect };
         });
       }
 
-      // UI helpers
       const dark = theme==='dark';
       const catMeta = CAT_STYLES(dark);
-      const diffMeta = DIFF_STYLES(dark);
 
       return (
         <div className={"min-h-screen "+(dark? 'bg-slate-950 text-slate-100':'bg-gradient-to-b from-white to-slate-50 text-slate-800')}>
@@ -252,9 +236,9 @@
             {error && <div className="mt-6 p-4 rounded-2xl border bg-rose-100 text-rose-800 border-rose-300">{error}</div>}
 
             {!game ? (
-              <Setup all={allQuestions} setup={setup} setSetup={setSetup} startGame={startGame} catMeta={catMeta} diffMeta={diffMeta} />
+              <Setup all={allQuestions} setup={setup} setSetup={setSetup} startGame={startGame} catMeta={catMeta} />
             ) : (
-              <BoardUI game={game} setGame={setGame} catMeta={catMeta} diffMeta={diffMeta} rollDie={rollDie} askQuestionFor={askQuestionFor} answer={answer} nextTurn={nextTurn} />
+              <BoardUI game={game} setGame={setGame} catMeta={catMeta} rollDie={rollDie} askQuestionFor={askQuestionFor} answer={answer} nextTurn={nextTurn} />
             )}
 
             <footer className="mt-8 text-center text-xs text-slate-500">Este modo usa tus packs desde <code>questions/manifest.json</code>. Las opciones de respuesta están <b>barajadas</b> en cada pregunta y el <b>orden del mazo</b> cambia cada partida.</footer>
@@ -263,12 +247,14 @@
       );
     }
 
-    function Setup({all, setup, setSetup, startGame, catMeta, diffMeta}){
+    function Setup({all, setup, setSetup, startGame, catMeta}){
       const available = useMemo(()=>{
         const cats = Object.entries(setup.categories).filter(([,v])=>v).map(([k])=>k);
         const diffs = Object.entries(setup.difficulties).filter(([,v])=>v).map(([k])=>k);
         return all.filter(q=>cats.includes(q.cat)&&diffs.includes(q.diff)).length;
       },[all,setup]);
+
+      const diffMeta = DIFF_STYLES(document.documentElement.classList.contains('dark'));
 
       return (
         <div className="mt-6 grid lg:grid-cols-2 gap-6">
@@ -306,9 +292,9 @@
               <div className="sm:col-span-2">
                 <label className="text-sm">Dificultad</label>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {Object.entries(diffMeta).map(([k,v])=> (
-                    <button key={k} onClick={()=>setSetup({...setup, difficulties:{...setup.difficulties, [k]: !setup.difficulties[k]}})}
-                      className={(setup.difficulties[k]? v.cls : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-300 dark:border-slate-600')+" px-3 py-1.5 rounded-xl text-sm"}>{v.label}</button>
+                  {Object.entries(setup.difficulties).map(([k,v])=> (
+                    <button key={k} onClick={()=>setSetup({...setup, difficulties:{...setup.difficulties, [k]: !v}})}
+                      className={(v? diffMeta[k].cls : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-300 dark:border-slate-600')+" px-3 py-1.5 rounded-xl text-sm"}>{diffMeta[k].label}</button>
                   ))}
                 </div>
               </div>
@@ -341,19 +327,13 @@
       );
     }
 
-    function BoardUI({game,setGame,catMeta,diffMeta,rollDie,askQuestionFor,answer,nextTurn}){
+    function BoardUI({game,setGame,catMeta,rollDie,askQuestionFor,answer,nextTurn}){
       const activeCatsOrdered = Array.from(new Set(game.board.map(c=>c.cat)));
-      const cellsByPos = {};
-      game.board.forEach(c=>{ cellsByPos[c.pos.join(',')] = c; });
-
+      const cellsByPos = {}; game.board.forEach(c=>{ cellsByPos[c.pos.join(',')] = c; });
       const currentPlayer = game.players[game.turn];
       const cell = game.board[currentPlayer.pos];
 
-      useEffect(()=>{
-        if(game.state==='landed'){
-          askQuestionFor(cell.cat);
-        }
-      },[game.state]);
+      useEffect(()=>{ if(game.state==='landed'){ askQuestionFor(cell.cat); } },[game.state]);
 
       return (
         <div className="mt-6 grid lg:grid-cols-2 gap-6">
@@ -363,22 +343,17 @@
               {Array.from({length:5}).map((_,y)=> (
                 <React.Fragment key={y}>
                   {Array.from({length:5}).map((_,x)=>{
-                    const key = `${x},${y}`;
-                    const c = cellsByPos[key];
-                    const isRing = !!c;
+                    const key = `${x},${y}`; const c = cellsByPos[key]; const isRing = !!c;
                     const isHere = (game.players.some(p=> game.board[p.pos].pos[0]===x && game.board[p.pos].pos[1]===y));
                     return (
-                      <div key={x} className={(isRing? (c.wedge? 'bg-slate-200 dark:bg-slate-800':'bg-slate-100 dark:bg-slate-900'):'bg-transparent')+" cell aspect-square rounded-xl border " + (isRing? 'border-slate-300 dark:border-slate-700':'border-transparent')+" relative overflow-hidden"}>
+                      <div key={x} className={(isRing? (c.wedge? 'bg-slate-200 dark:bg-slate-800':'bg-slate-100 dark:bg-slate-900'):'bg-transparent')+" cell aspect-square rounded-xl border "+(isRing? 'border-slate-300 dark:border-slate-700':'border-transparent')+" relative overflow-hidden"}>
                         {isRing && (
                           <div className={catMeta[c.cat].cls+" absolute left-1 top-1 rounded-md text-[10px] px-1.5 py-0.5"}>{c.wedge? 'Quesito' : catMeta[c.cat].name}</div>
                         )}
                         {isHere && (
                           <div className="absolute right-1.5 bottom-1.5 flex gap-1">
                             {game.players.map((p,i)=>{
-                              const pos = game.board[p.pos].pos;
-                              if(pos[0]!==x||pos[1]!==y) return null;
-                              const colors=['bg-rose-500','bg-sky-500','bg-emerald-500','bg-amber-500'];
-                              return <div key={i} className={"token "+colors[i]} title={p.name}></div>
+                              const pos = game.board[p.pos].pos; if(pos[0]!==x||pos[1]!==y) return null; return <Token key={i} index={i} title={p.name}/>;
                             })}
                           </div>
                         )}
@@ -390,10 +365,19 @@
             </div>
 
             <div className="mt-3 flex items-center gap-3">
-              <div className="die bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600">{game.lastRoll||'–'}</div>
+              <Die value={game.lastRoll}/>
               <button disabled={game.rolling || game.state==='asking'} onClick={rollDie}
                 className={(game.rolling? 'bg-slate-300':'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90')+" px-4 py-2 rounded-2xl font-semibold"}>Tirar dado</button>
               <div className="text-sm text-slate-600 dark:text-slate-400">Turno: <b>{game.players[game.turn].name}</b></div>
+            </div>
+
+            <div className="mt-4">
+              <div className="text-xs mb-2 text-slate-500">Leyenda categorías</div>
+              <div className="flex flex-wrap gap-2">
+                {Array.from(new Set(game.board.map(c=>c.cat))).map(cat => (
+                  <span key={cat} className={catMeta[cat].cls+" px-2 py-1 rounded-md text-xs"}>{catMeta[cat].name}</span>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -402,7 +386,7 @@
             <div className="grid gap-3">
               {game.players.map((p,i)=> (
                 <div key={i} className={(i===game.turn?'ring-2 ring-slate-900 dark:ring-white':'')+" rounded-xl p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"}>
-                  <div className="text-sm font-semibold mb-2">{p.name}</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold mb-2"><Token index={i} title={p.name}/> {p.name}</div>
                   <div className="flex flex-wrap gap-2">
                     {activeCatsOrdered.map(cat=> (
                       <div key={cat} className={(p.wedges[cat]? catMeta[cat].cls: 'bg-slate-100 dark:bg-slate-700 text-slate-500 border border-slate-300 dark:border-slate-600')+" px-2 py-1 rounded-md text-xs"}>
@@ -418,11 +402,9 @@
           {game.state==='asking' && (
             <QuestionModal q={game.currentQ} catMeta={catMeta} answer={answer} />
           )}
-
           {game.state==='feedback' && (
             <Feedback correct={game.lastCorrect} onNext={()=>nextTurn(game.lastCorrect)} />
           )}
-
           {game.state==='win' && (
             <Win name={game.players[game.turn].name} />
           )}
@@ -446,7 +428,7 @@
                 </button>
               ))}
             </div>
-            <div className="mt-3 text-xs text-slate-500">* El orden de las opciones se baraja en cada pregunta.</div>
+            {q.exp && <div className="mt-3 text-xs text-slate-500">Pista/Explicación: {q.exp}</div>}
           </div>
         </div>
       );
