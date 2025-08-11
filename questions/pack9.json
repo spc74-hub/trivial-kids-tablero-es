@@ -1,0 +1,1057 @@
+{
+  "version": "pack9-v1",
+  "categories": {
+    "GEO": "Geografía",
+    "HIS": "Historia",
+    "LEN": "Lengua y Literatura",
+    "SCI": "Ciencia y Tecnología",
+    "CUL": "Cultura y Deporte",
+    "LANG": "Idiomas EN/FR",
+    "RIDDLE": "Adivinanzas",
+    "MEDIA": "Películas y Juegos",
+    "REL": "Religión",
+    "MUS": "Música"
+  },
+  "questions": [
+    {
+      "id": "P9-001",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "Capital de Irlanda",
+      "options": [
+        "Dublín",
+        "Belfast",
+        "Cork",
+        "Galway"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-002",
+      "cat": "GEO",
+      "diff": "EASY",
+      "q": "País con la Selva Amazónica",
+      "options": [
+        "Brasil",
+        "Argentina",
+        "Perú",
+        "Bolivia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-003",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "Mar que baña Polonia",
+      "options": [
+        "Báltico",
+        "Negro",
+        "Norte",
+        "Mediterráneo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-004",
+      "cat": "GEO",
+      "diff": "MEDIUM",
+      "q": "Capital de Eslovenia",
+      "options": [
+        "Liubliana",
+        "Bratislava",
+        "Zagreb",
+        "Sarajevo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-005",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "País con capital Astaná (Nursultán/actual Astana)",
+      "options": [
+        "Kazajistán",
+        "Uzbekistán",
+        "Tayikistán",
+        "Turkmenistán"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-006",
+      "cat": "GEO",
+      "diff": "HARD",
+      "q": "Río que atraviesa El Cairo",
+      "options": [
+        "Nilo",
+        "Tigris",
+        "Éufrates",
+        "Níger"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-007",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "Macizo Central se encuentra en…",
+      "options": [
+        "Francia",
+        "España",
+        "Italia",
+        "Suiza"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-008",
+      "cat": "GEO",
+      "diff": "EXPERT",
+      "q": "País con mayor número de islas",
+      "options": [
+        "Suecia",
+        "Noruega",
+        "Indonesia",
+        "Filipinas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-009",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Descubrimiento de América",
+      "options": [
+        "1492",
+        "1502",
+        "1482",
+        "1519"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-010",
+      "cat": "HIS",
+      "diff": "EASY",
+      "q": "Emperador romano asesinado en Idus de marzo",
+      "options": [
+        "Julio César",
+        "Nerón",
+        "Trajano",
+        "Augusto"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-011",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Año de independencia de EE. UU.",
+      "options": [
+        "1776",
+        "1789",
+        "1812",
+        "1756"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-012",
+      "cat": "HIS",
+      "diff": "MEDIUM",
+      "q": "Rey 'el Católico' junto a Isabel I",
+      "options": [
+        "Fernando II de Aragón",
+        "Carlos I",
+        "Felipe II",
+        "Juan II"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-013",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Batalla de las Navas de Tolosa",
+      "options": [
+        "1212",
+        "711",
+        "1492",
+        "1808"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-014",
+      "cat": "HIS",
+      "diff": "HARD",
+      "q": "Tratado que puso fin a la Guerra de Independencia de EE. UU.",
+      "options": [
+        "París (1783)",
+        "Versalles",
+        "Utrecht",
+        "Amiens"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-015",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Dinastía iniciada por Enrique II en Inglaterra",
+      "options": [
+        "Plantagenet",
+        "Tudor",
+        "Estuardo",
+        "Hanover"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-016",
+      "cat": "HIS",
+      "diff": "EXPERT",
+      "q": "Capitulaciones que permitieron el viaje de Colón",
+      "options": [
+        "Santa Fe",
+        "Toledo",
+        "Aranjuez",
+        "Bayona"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-017",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "Sinónimo de 'bonito'",
+      "options": [
+        "hermoso",
+        "feo",
+        "raro",
+        "tosco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-018",
+      "cat": "LEN",
+      "diff": "EASY",
+      "q": "¿Qué es un pronombre?",
+      "options": [
+        "Sustituye al nombre",
+        "Acción",
+        "Califica al nombre",
+        "Une oraciones"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-019",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Identifica hiato",
+      "options": [
+        "po-e-ta",
+        "cau-sa",
+        "cui-da-do",
+        "hueso"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-020",
+      "cat": "LEN",
+      "diff": "MEDIUM",
+      "q": "Figura: 'Te lo dije mil veces'",
+      "options": [
+        "hipérbole",
+        "metáfora",
+        "anáfora",
+        "ironía"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-021",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "'Se' en 'se lo di' funciona como…",
+      "options": [
+        "pronombre dativo",
+        "artículo",
+        "adjetivo",
+        "conjunción"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-022",
+      "cat": "LEN",
+      "diff": "HARD",
+      "q": "Autor de 'La Regenta'",
+      "options": [
+        "Leopoldo Alas (Clarín)",
+        "Galdós",
+        "Baroja",
+        "Valle-Inclán"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-023",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "Verso de arte menor",
+      "options": [
+        "octosílabo",
+        "endecasílabo",
+        "dodecasílabo",
+        "alejandrino"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-024",
+      "cat": "LEN",
+      "diff": "EXPERT",
+      "q": "'Carpe diem' significa…",
+      "options": [
+        "aprovecha el día",
+        "vanidad de vanidades",
+        "huida del mundanal ruido",
+        "tempus fugit"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-025",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Planeta rojo",
+      "options": [
+        "Marte",
+        "Venus",
+        "Mercurio",
+        "Júpiter"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-026",
+      "cat": "SCI",
+      "diff": "EASY",
+      "q": "Molécula del agua",
+      "options": [
+        "H2O",
+        "CO2",
+        "O3",
+        "NH3"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-027",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "Unidad SI de fuerza",
+      "options": [
+        "newton",
+        "joule",
+        "watt",
+        "pascal"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-028",
+      "cat": "SCI",
+      "diff": "MEDIUM",
+      "q": "La fotosíntesis produce principalmente…",
+      "options": [
+        "oxígeno y glucosa",
+        "nitrógeno",
+        "sal",
+        "metano"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-029",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Número atómico del carbono",
+      "options": [
+        "6",
+        "8",
+        "12",
+        "14"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-030",
+      "cat": "SCI",
+      "diff": "HARD",
+      "q": "Ley que describe F = m·a",
+      "options": [
+        "Segunda ley de Newton",
+        "Primera de Newton",
+        "Tercera de Newton",
+        "Ley de Ohm"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-031",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "Efecto Doppler afecta a…",
+      "options": [
+        "ondas",
+        "temperatura",
+        "masa",
+        "carga"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-032",
+      "cat": "SCI",
+      "diff": "EXPERT",
+      "q": "Partícula responsable del enlace iónico",
+      "options": [
+        "electrones",
+        "protones",
+        "neutrones",
+        "quarks"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-033",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Plaza Mayor famosa por los Sanfermines",
+      "options": [
+        "Pamplona",
+        "Madrid",
+        "Burgos",
+        "León"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-034",
+      "cat": "CUL",
+      "diff": "EASY",
+      "q": "Deporte con aro y balón anaranjado",
+      "options": [
+        "baloncesto",
+        "fútbol",
+        "balonmano",
+        "rugby"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-035",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "Director de 'La forma del agua'",
+      "options": [
+        "Guillermo del Toro",
+        "Nolan",
+        "Tarantino",
+        "Scorsese"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-036",
+      "cat": "CUL",
+      "diff": "MEDIUM",
+      "q": "Órgano musical de tubos se llama…",
+      "options": [
+        "órgano",
+        "clave",
+        "clavicordio",
+        "armónium"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-037",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Año Expo de Sevilla",
+      "options": [
+        "1992",
+        "2000",
+        "1986",
+        "1998"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-038",
+      "cat": "CUL",
+      "diff": "HARD",
+      "q": "Novelista de 'Patria'",
+      "options": [
+        "Fernando Aramburu",
+        "Cercas",
+        "Reverte",
+        "Delibes"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-039",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Estadio del Real Betis",
+      "options": [
+        "Benito Villamarín",
+        "Sánchez-Pizjuán",
+        "La Cartuja",
+        "Mestalla"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-040",
+      "cat": "CUL",
+      "diff": "EXPERT",
+      "q": "Pintor de 'El jardín de las delicias'",
+      "options": [
+        "El Bosco",
+        "El Greco",
+        "Velázquez",
+        "Goya"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-041",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "EN: Opposite of 'slow'",
+      "options": [
+        "fast",
+        "soft",
+        "hard",
+        "late"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-042",
+      "cat": "LANG",
+      "diff": "EASY",
+      "q": "FR: Traduire — 'Au revoir'",
+      "options": [
+        "Adiós",
+        "Hola",
+        "Gracias",
+        "Por favor"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-043",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "EN: Past perfect — They ___ left.",
+      "options": [
+        "had",
+        "have",
+        "has",
+        "was"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-044",
+      "cat": "LANG",
+      "diff": "MEDIUM",
+      "q": "FR: 'Nous ___ au lycée.'",
+      "options": [
+        "allons",
+        "allions",
+        "irons",
+        "sommes allés"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-045",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "EN: Passive — People speak Spanish here.",
+      "options": [
+        "Spanish is spoken here",
+        "Spanish was spoken here",
+        "People is spoken Spanish here",
+        "Spanish has spoken here"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-046",
+      "cat": "LANG",
+      "diff": "HARD",
+      "q": "FR: Subjonctif — Il faut que vous ___",
+      "options": [
+        "fassiez",
+        "faites",
+        "feriez",
+        "ferez"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-047",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "EN: Relative pronoun for people (obj.)",
+      "options": [
+        "whom",
+        "which",
+        "that",
+        "what"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-048",
+      "cat": "LANG",
+      "diff": "EXPERT",
+      "q": "FR: Conditionnel passé (il) de 'être'",
+      "options": [
+        "aurait été",
+        "serait été",
+        "a été",
+        "eût été"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-049",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Tiene patas y no camina",
+      "options": [
+        "la mesa",
+        "la cama",
+        "la silla",
+        "el banco"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-050",
+      "cat": "RIDDLE",
+      "diff": "EASY",
+      "q": "Blanca por dentro, verde por fuera",
+      "options": [
+        "la pera",
+        "el kiwi",
+        "la manzana",
+        "la uva"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-051",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Va y viene y no se cansa",
+      "options": [
+        "la marea",
+        "el tren",
+        "el viento",
+        "la lluvia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-052",
+      "cat": "RIDDLE",
+      "diff": "MEDIUM",
+      "q": "Habla sin boca y responde sin ser",
+      "options": [
+        "el eco",
+        "la radio",
+        "la tele",
+        "el libro"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-053",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "Vive si lo alimentas y muere si bebes agua",
+      "options": [
+        "el fuego",
+        "la vela",
+        "el sol",
+        "el carbón"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-054",
+      "cat": "RIDDLE",
+      "diff": "HARD",
+      "q": "Se moja mientras seca",
+      "options": [
+        "la toalla",
+        "la esponja",
+        "el suelo",
+        "la ropa"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-055",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "Me sigues siempre, a veces me escondo",
+      "options": [
+        "la sombra",
+        "el nombre",
+        "el eco",
+        "la estela"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-056",
+      "cat": "RIDDLE",
+      "diff": "EXPERT",
+      "q": "Tengo agujeros, pero guardo líquido",
+      "options": [
+        "la esponja",
+        "el colador",
+        "la red",
+        "el cubo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-057",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Mascota de 'Animal Crossing'",
+      "options": [
+        "Canela (Isabelle)",
+        "Pikachu",
+        "Luigi",
+        "Kirby"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-058",
+      "cat": "MEDIA",
+      "diff": "EASY",
+      "q": "Héroe con escudo Hyliano",
+      "options": [
+        "Link",
+        "Zelda",
+        "Ganon",
+        "Sheik"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-059",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Director de 'E.T.'",
+      "options": [
+        "Steven Spielberg",
+        "George Lucas",
+        "James Cameron",
+        "Ridley Scott"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-060",
+      "cat": "MEDIA",
+      "diff": "MEDIUM",
+      "q": "Juego de coches de Nintendo",
+      "options": [
+        "Mario Kart",
+        "F-Zero",
+        "Gran Turismo",
+        "Forza"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-061",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Compositor de 'Interstellar'",
+      "options": [
+        "Hans Zimmer",
+        "John Williams",
+        "Howard Shore",
+        "James Horner"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-062",
+      "cat": "MEDIA",
+      "diff": "HARD",
+      "q": "Consola portátil antes de Switch",
+      "options": [
+        "3DS",
+        "PSP",
+        "Vita",
+        "Game Boy Color"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-063",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Año de estreno de 'El viaje de Chihiro' en Japón",
+      "options": [
+        "2001",
+        "2003",
+        "1999",
+        "2005"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-064",
+      "cat": "MEDIA",
+      "diff": "EXPERT",
+      "q": "Saga de Geralt de Rivia",
+      "options": [
+        "The Witcher",
+        "Dark Souls",
+        "Dragon Age",
+        "Elder Scrolls"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-065",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Ciudad santa para judíos, cristianos y musulmanes",
+      "options": [
+        "Jerusalén",
+        "Roma",
+        "La Meca",
+        "Benarés"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-066",
+      "cat": "REL",
+      "diff": "EASY",
+      "q": "Sacramento cristiano del pan y el vino",
+      "options": [
+        "Eucaristía",
+        "Confirmación",
+        "Bautismo",
+        "Unción"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-067",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Rama mayoritaria del cristianismo",
+      "options": [
+        "Catolicismo",
+        "Ortodoxia",
+        "Protestantismo",
+        "Anglicanismo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-068",
+      "cat": "REL",
+      "diff": "MEDIUM",
+      "q": "Camino óctuple pertenece a…",
+      "options": [
+        "Budismo",
+        "Hinduismo",
+        "Islam",
+        "Judaísmo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-069",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Concilio de Trento trató la…",
+      "options": [
+        "Reforma católica",
+        "Trinidad",
+        "Iconoclasia",
+        "Crucesadas"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-070",
+      "cat": "REL",
+      "diff": "HARD",
+      "q": "Idioma en que se redactó gran parte de la Septuaginta",
+      "options": [
+        "Griego",
+        "Latín",
+        "Hebreo",
+        "Arameo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-071",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Fundador del confucianismo",
+      "options": [
+        "Confucio",
+        "Lao-Tsé",
+        "Mencio",
+        "Zaratustra"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-072",
+      "cat": "REL",
+      "diff": "EXPERT",
+      "q": "Pascua judía conmemora…",
+      "options": [
+        "Éxodo de Egipto",
+        "Creación",
+        "Diluvio",
+        "Torre de Babel"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-073",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Instrumento de cuerda frotada",
+      "options": [
+        "violín",
+        "flauta",
+        "trompeta",
+        "oboe"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-074",
+      "cat": "MUS",
+      "diff": "EASY",
+      "q": "Símbolo que anula alteraciones",
+      "options": [
+        "becuadro",
+        "sostenido",
+        "bemol",
+        "calderón"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-075",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Compositor de 'La Traviata'",
+      "options": [
+        "Verdi",
+        "Puccini",
+        "Rossini",
+        "Donizetti"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-076",
+      "cat": "MUS",
+      "diff": "MEDIUM",
+      "q": "Intervalo de 2 semitonos",
+      "options": [
+        "segunda mayor",
+        "segunda menor",
+        "tercera menor",
+        "cuarta justa"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-077",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Compás de la bulería",
+      "options": [
+        "12 tiempos",
+        "3/4",
+        "2/4",
+        "4/4"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-078",
+      "cat": "MUS",
+      "diff": "HARD",
+      "q": "Acorde aumentado (tríada)",
+      "options": [
+        "1, 3, #5",
+        "1, ♭3, 5",
+        "1, 3, 5",
+        "1, 4, 5"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-079",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Cadencia andaluza típica",
+      "options": [
+        "iv–III–II–I (en frigio)",
+        "ii–V–I",
+        "V–I",
+        "IV–I"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "P9-080",
+      "cat": "MUS",
+      "diff": "EXPERT",
+      "q": "Tempo 'adagio' indica…",
+      "options": [
+        "lento",
+        "muy rápido",
+        "moderado",
+        "muy lento"
+      ],
+      "correct": 0
+    }
+  ]
+}
